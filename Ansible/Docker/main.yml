@@ -1,0 +1,10 @@
+---
+- hosts: servers
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  roles:
+    - prep
+    - dockerfile
+    - container
