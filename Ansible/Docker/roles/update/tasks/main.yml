@@ -1,0 +1,8 @@
+---
+- name: Copiando a Pagina WEB
+  ansible.builtin.copy:
+    src: /tmp/index.html
+    dest: /tmp/index.html
+
+- name:  Atualizando o APP ( Pagina index.html )
+  command: docker cp /tmp/index.html httpd:/usr/local/apache2/htdocs/
