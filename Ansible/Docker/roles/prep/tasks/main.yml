@@ -1,0 +1,33 @@
+---
+- name: Atualizando todos os pacotes do SO na Ultima Versão
+  apt:
+   name: "*"
+   state: latest
+  
+- name: apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Instação dos pacotes de sistema necessários
+  apt: 
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Adcionando o Repositorio do Docker
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Instalação do pacote Python-Pip
+  apt:
+    pkg:
+    - python3-pip
+    - docker-ce
+
+- name: Instalando o Modulo do Docker
+  pip:
+    name: docker
